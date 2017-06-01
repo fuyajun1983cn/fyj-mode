@@ -7,24 +7,25 @@ is permitted, I'll try to implement more functions:
 ** TODO-List [0/2]
    - [ ] trigger playing music one by one only by one time. 
      Currently, you must trigger the song  playing everytime when the
-     priviuse song playing is over.
+     previous song playing is over.
    - [ ] more accurate music playing control.
 
 * Usage
   
 ** Customized configuration. 
-   I have defined two virables that you must set first. 
+   I have defined two virables which you must set first. 
    1. =fyj-player=
-      beacause we need a music player backend, so you need specify
+      beacause we need a music player backend to actually to do the
+      music playing work, so you need specify
       one, Suggested values are:
-      - mplayer  using mplayer as the backend
-      - cvlc     using vlc as the backend"
+      - *mplayer*  using mplayer as the backend
+      - *cvlc*     using vlc as the backend"
    2. =fyj-playlistdir=
       the directory where your music files stored. Currently, I only
       select mp3 file.
 
 ** add the mode to your emacs configuration
-   to use this mode, you only add this file to your emacs load path,
+   to use this mode, you only need to put this file to your emacs load path,
    then add the following code in your emacs init script:
    #+BEGIN_SRC emacs-lisp
      (require 'fyj-mode)

@@ -51,9 +51,9 @@ cvlc     using vlc as the backend"
   :group 'fyj
   :type 'string)
 
-(defvar fyj-is-playing nil
+(defvar fyj-mode-timer nil
   "Is player running now.")
-(make-variable-buffer-local 'fyj-mode)
+(make-variable-buffer-local 'fyj-mode-timer)
 
 (defvar fyj-mode nil
   "Mode variable for refill minor mode.")
@@ -80,18 +80,10 @@ cvlc     using vlc as the backend"
       (interrupt-process fyj-player)
     (fyj-play-music-file)))
 
-
-(define-minor-mode fyj-mode
-  "Minor mode: FYJ-MODE."
-  :group 'fyj
-  :global nil
-  (cond
-   (fyj-mode
-    (message "fyj-mode off"))
-   (t
-    (message "fyj-mode on")))
-  (toggle-play-background-music))
-
+(defun fyj-mode-timer-handler()
+  "Handler for timer."
+  (unless (get-process fyj-player)
+    (toggle-play-background-music)))
 
 (define-minor-mode global-fyj-mode
   "Minor mode: FYJ-MODE."
@@ -99,11 +91,18 @@ cvlc     using vlc as the backend"
   :global t
   (cond
    (fyj-mode
-    (message "fyj-mode off"))
+    (progn
+      (message "turn fyj-mode off")
+      (setq fyj-mode nil)
+      (when fyj-mode-timer
+        (cancel-timer fyj-mode-timer)
+        (setq fyj-mode-timer nil))))
    (t
-    (message "fyj-mode on")))
+    (progn
+      (message "turn fyj-mode on")
+      (setq fyj-mode t)
+      (setq fyj-mode-timer (run-with-timer 0 3 'fyj-mode-timer-handler)))))
   (toggle-play-background-music))
-
 
 (provide 'fyj-mode)
 

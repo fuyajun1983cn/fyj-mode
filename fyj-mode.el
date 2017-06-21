@@ -63,7 +63,6 @@ cvlc     using vlc as the backend"
 
 (defun fyj-play-music-file ()
   "Play music file specified by MUSIC-FILE."
-  (message "Please music file")
   (let* ((list (directory-files fyj-playlistdir nil "\\.mp3$"))
          (n (length list))
          (file (nth (random n) list)))
@@ -71,7 +70,8 @@ cvlc     using vlc as the backend"
         (progn
           (start-process fyj-player nil fyj-player (format "%s/%s" fyj-playlistdir file))
           (if (executable-find "notify-send")
-              (start-process "fyj-mode-notification" nil "notify-send" (format "将要播放 %s" file)))
+              (start-process "fyj-mode-notification" nil "notify-send" (format "将要播放 %s" file))
+            (message (format "将要播放 %s" file)))
           )
       (message "Please install mplayer on your system first."))))
 

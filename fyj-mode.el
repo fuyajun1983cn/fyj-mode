@@ -63,6 +63,7 @@ cvlc     using vlc as the backend"
 
 (defun fyj-play-music-file ()
   "Play music file specified by MUSIC-FILE."
+  (message "Please music file")
   (let* ((list (directory-files fyj-playlistdir nil "\\.mp3$"))
          (n (length list))
          (file (nth (random n) list)))
@@ -77,7 +78,8 @@ cvlc     using vlc as the backend"
 (defun toggle-play-background-music()
   "Start or stop background music player."
   (if (get-process fyj-player)
-      (interrupt-process fyj-player)
+      (progn
+      (interrupt-process fyj-player))
     (fyj-play-music-file)))
 
 (defun fyj-mode-timer-handler()

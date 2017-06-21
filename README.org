@@ -4,8 +4,8 @@ fyj-mode is a minor mode for playing background music. Currently, I
 only implement the basic background music playing function. When time
 is permitted, I'll try to implement more functions:
 
-** TODO-List [0/2]
-   - [ ] trigger playing music one by one only by one time. 
+** TODO-List [1/2]
+   - [X] trigger playing music one by one only by one time. 
      Currently, you must trigger the song  playing everytime when the
      previous song playing is over.
    - [ ] more accurate music playing control.
@@ -32,6 +32,6 @@ is permitted, I'll try to implement more functions:
      (global-set-key (kbd "<f5>") 'global-fyj-mode)   
    #+END_SRC
    
-   as you can see, I bind <F5> as the key to trigger the music
+   as you can see, I bind <F5> as the key to toggle the music
    player. Of course you can choose any other key bindings at your
    will. 

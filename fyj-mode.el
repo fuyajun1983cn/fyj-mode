@@ -110,5 +110,3 @@ cvlc     using vlc as the backend"
 (provide 'fyj-mode)
 
 ;;; fyj-mode.el ends here
-
-

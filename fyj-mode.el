@@ -78,8 +78,7 @@ cvlc     using vlc as the backend"
 (defun toggle-play-background-music()
   "Start or stop background music player."
   (if (get-process fyj-player)
-      (progn
-      (interrupt-process fyj-player))
+      (interrupt-process fyj-player)
     (fyj-play-music-file)))
 
 (defun fyj-mode-timer-handler()
@@ -96,6 +95,8 @@ cvlc     using vlc as the backend"
     (progn
       (message "turn fyj-mode off")
       (setq fyj-mode nil)
+      (if (get-process fyj-player)
+          (interrupt-process fyj-player))
       (when fyj-mode-timer
         (cancel-timer fyj-mode-timer)
         (setq fyj-mode-timer nil))))

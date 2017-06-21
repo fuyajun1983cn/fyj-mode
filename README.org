@@ -1,4 +1,4 @@
-
+[[https://travis-ci.org/fuyajun1983cn/fyj-mode.svg?branch%3Dmaster][https://travis-ci.org/fuyajun1983cn/fyj-mode.svg?branch=master]]
 * Overview  
 fyj-mode is a minor mode for playing background music. Currently, I
 only implement the basic background music playing function. When time
